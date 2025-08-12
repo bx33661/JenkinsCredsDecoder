@@ -9,9 +9,6 @@
 
 
 ## 环境要求
-- Python 3.7+
-- 依赖：pycryptodome
-
 安装依赖：
 ```
 pip install -r requirements.txt
@@ -43,47 +40,3 @@ python3 jenkins_credential.py <master.key> <hudson.util.Secret> <密文或密文
 python3 jenkins_credential.py <master.key> <hudson.util.Secret> <密文或文件> -v
 ```
 
-
-## 示例
-- 直接传入花括号包裹的密文：
-```
-python3 jenkins_credential.py secrets/master.key secrets/hudson.util.Secret "{AQAAAB...}"
-```
-
-- 直接传入不带花括号的密文：
-```
-python3 jenkins_credential.py secrets/master.key secrets/hudson.util.Secret "AQAAAB..."
-```
-
-- 从文件读取密文：
-```
-python3 jenkins_credential.py secrets/master.key secrets/hudson.util.Secret credential.txt
-```
-
-输出：脚本会将解密后的明文密码直接打印到标准输出。
-
-
-## 常见问题与排错
-- ImportError: No module named Crypto
-  - 未安装依赖，执行：`pip install pycryptodome`
-
-- Invalid base64 credential / Empty payload after base64 decode
-  - 第三个参数不是合法的 Base64 字符串，或文件内容为空；请确认粘贴时未包含多余空白、未被换行破坏。可保留或去除花括号再试。
-
-- Decryption failed: Magic bytes not found in decrypted data（旧格式报错）
-  - 提供的密文可能不是旧格式，或 master.key/hudson.util.Secret 与该密文不匹配。
-
-- Windows 下 `python3` 命令不可用
-  - 可尝试将命令中的 `python3` 替换为 `python`。
-
-
-## 安全提示
-- 请在合法合规、授权范围内使用本工具。
-- master.key/hudson.util.Secret 与敏感密文均属于高敏感数据，请妥善存放，不要上传到公共仓库。
-
-
-## 鸣谢
-- https://github.com/tweksteen/jenkins-decrypt
-- https://github.com/bstapes/jenkins-decrypt
-
-本项目在上述思路基础上进行工程化优化与健壮性增强，仅用于安全研究与取证自救。
