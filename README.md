@@ -1,4 +1,6 @@
 # Jenkins_Credentials_Crack
+使用具体可以见文章
+https://www.bx33661.com/blog/jenkins-credential-crack/
 
 单条 Jenkins 凭据解密脚本（优化版）。用于在具备 master.key 与 hudson.util.Secret 的前提下，解密 Jenkins 配置或插件产生的单个加密密文。
 
