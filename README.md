@@ -1,4 +1,5 @@
-# Jenkins_Credentials_Crack
+# JenkinsCredsDecoder
+
 
 ![Jenkins Credential Decryption Tool](public/image.png)
 
